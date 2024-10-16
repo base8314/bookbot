@@ -1,15 +1,12 @@
-def main():
+with open("/home/base8314/workspace/github.com/base8314/bookbot/books/frankenstein.txt") as f:
+    file_contents = f.read()
+
+def word_count(file_string):
     #Main function
     #inputs = .txt file
-    #Returns # of words in the file
-   
-
-
-    with open("/home/base8314/workspace/github.com/base8314/bookbot/books/frankenstein.txt") as f:
-        file_contents = f.read()
-        
-    word_text = file_contents.split()
-    print(len(word_text))
+    #Returns # of words in the file    
+    word_text = file_string.split()
+    return(len(word_text))
 
 
 
@@ -25,7 +22,23 @@ def character_count(character_string):
             char_count[char]= char_count[char] + 1
 
     sorted_char_count = dict(sorted(char_count.items()))
-    print(sorted_char_count)    
+    return(sorted_char_count)    
 
-character_count(simple_string)
 
+def report_print(sorted_dict_count):
+    #Prints to console
+    #inputs = sorted dictionary of character counts
+    #returns = None
+    print("--- Begin report of books/frankenstein.txt ---")
+    print("%d words found in the document" %(word_count(file_contents)))
+    print("\n")
+    
+    for key, value in (sorted_dict_count).items():
+        if key == "\n":
+            pass
+        else:
+            print("The '%s' character was found %d times" %(key,value))
+    print("---End Report---")
+
+
+report_print(character_count(file_contents))
